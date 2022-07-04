@@ -1,4 +1,4 @@
-package xyz.illuminate.terminal.Utils;
+package com.illuminate.Utils;
 
 import androidx.annotation.NonNull;
 
@@ -6,13 +6,12 @@ import com.blankj.utilcode.util.FileIOUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.ResourceUtils;
 import com.blankj.utilcode.util.ZipUtils;
+import com.illuminate.app.App;
 
 import org.jetbrains.annotations.Contract;
 
 import java.io.File;
 import java.util.concurrent.CompletableFuture;
-
-import xyz.illuminate.terminal.app.App;
 
 public class ToolsManager {
 

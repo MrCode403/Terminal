@@ -1,10 +1,10 @@
-package xyz.illuminate.terminal;
+package com.illuminate;
 
-import static xyz.illuminate.terminal.Utils.Environment.BIN_DIR;
-import static xyz.illuminate.terminal.Utils.Environment.HOME;
-import static xyz.illuminate.terminal.Utils.Environment.LOGIN_SHELL;
-import static xyz.illuminate.terminal.Utils.Environment.PREFIX;
-import static xyz.illuminate.terminal.Utils.Environment.getEnvironment;
+import static com.illuminate.Utils.Environment.BIN_DIR;
+import static com.illuminate.Utils.Environment.HOME;
+import static com.illuminate.Utils.Environment.LOGIN_SHELL;
+import static com.illuminate.Utils.Environment.PREFIX;
+import static com.illuminate.Utils.Environment.getEnvironment;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -25,6 +25,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.blankj.utilcode.util.ClipboardUtils;
 import com.blankj.utilcode.util.KeyboardUtils;
+import com.illuminate.Utils.BootstrapInstaller;
+import com.illuminate.Utils.ConstantsBridge;
+import com.illuminate.Utils.Environment;
 
 import org.json.JSONException;
 
@@ -32,9 +35,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Map;
 
-import xyz.illuminate.terminal.Utils.BootstrapInstaller;
-import xyz.illuminate.terminal.Utils.ConstantsBridge;
-import xyz.illuminate.terminal.Utils.Environment;
+import xyz.illuminate.terminal.R;
+import xyz.illuminate.terminal.TerminalEmulator;
+import xyz.illuminate.terminal.TerminalSession;
+import xyz.illuminate.terminal.TerminalSessionClient;
+import xyz.illuminate.terminal.TextStyle;
 import xyz.illuminate.terminal.view.TerminalView;
 import xyz.illuminate.terminal.view.TerminalViewClient;
 import xyz.illuminate.terminal.view.virtualkeys.SpecialButton;

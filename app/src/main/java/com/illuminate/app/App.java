@@ -1,12 +1,12 @@
-package xyz.illuminate.terminal.app;
+package com.illuminate.app;
 
 import android.app.Application;
 import android.content.Context;
 import android.os.Build;
 
-import java.util.Arrays;
+import com.illuminate.Utils.ToolsManager;
 
-import xyz.illuminate.terminal.Utils.ToolsManager;
+import java.util.Arrays;
 
 public class App extends Application {
 
