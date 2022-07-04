@@ -1,10 +1,8 @@
-package com.illuminate.app;
+package xyz.illuminate.app;
 
 import android.app.Application;
 import android.content.Context;
 import android.os.Build;
-
-import com.illuminate.Utils.ToolsManager;
 
 import java.util.Arrays;
 
@@ -15,7 +13,7 @@ public class App extends Application {
     public static String getArch() {
         if (isAarch64()) {
             return "arm64-v8a";
-        } else if (isAarch64()) {
+        } else if (isArmv7a()) {
             return "armeabi-v7a";
         }
         return null;
@@ -36,9 +34,6 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-        ToolsManager.init(this, null);
-
         try {
             applicationContext = getApplicationContext();
         } catch (Exception ignore) {
