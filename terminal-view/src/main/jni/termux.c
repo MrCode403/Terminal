@@ -110,7 +110,7 @@ static int create_subprocess(JNIEnv *env,
     }
 }
 
-JNIEXPORT jint JNICALL Java_xyz_illuminate_terminal_JNI_createSubprocess(
+JNIEXPORT jint JNICALL Java_xyz_illuminate_mrcode_JNI_createSubprocess(
         JNIEnv *env,
         jclass TERMUX_UNUSED(clazz),
         jstring cmd,
@@ -179,7 +179,7 @@ JNIEXPORT jint JNICALL Java_xyz_illuminate_terminal_JNI_createSubprocess(
     return ptm;
 }
 
-JNIEXPORT void JNICALL Java_xyz_illuminate_terminal_JNI_setPtyWindowSize(JNIEnv *TERMUX_UNUSED(env),
+JNIEXPORT void JNICALL Java_xyz_illuminate_mrcode_JNI_setPtyWindowSize(JNIEnv *TERMUX_UNUSED(env),
                                                                          jclass TERMUX_UNUSED(
                                                                                  clazz),
                                                                          jint fd, jint rows,
@@ -189,7 +189,7 @@ JNIEXPORT void JNICALL Java_xyz_illuminate_terminal_JNI_setPtyWindowSize(JNIEnv 
 }
 
 JNIEXPORT void JNICALL
-Java_xyz_illuminate_terminal_JNI_setPtyUTF8Mode(JNIEnv *TERMUX_UNUSED(env),
+Java_xyz_illuminate_mrcode_JNI_setPtyUTF8Mode(JNIEnv *TERMUX_UNUSED(env),
                                                 jclass TERMUX_UNUSED(clazz),
                                                 jint fd) {
     struct termios tios;
@@ -201,7 +201,7 @@ Java_xyz_illuminate_terminal_JNI_setPtyUTF8Mode(JNIEnv *TERMUX_UNUSED(env),
 }
 
 JNIEXPORT jint JNICALL
-Java_xyz_illuminate_terminal_JNI_waitFor(JNIEnv *TERMUX_UNUSED(env), jclass TERMUX_UNUSED(clazz),
+Java_xyz_illuminate_mrcode_JNI_waitFor(JNIEnv *TERMUX_UNUSED(env), jclass TERMUX_UNUSED(clazz),
                                          jint pid) {
     int status;
     waitpid(pid, &status, 0);
@@ -216,7 +216,7 @@ Java_xyz_illuminate_terminal_JNI_waitFor(JNIEnv *TERMUX_UNUSED(env), jclass TERM
 }
 
 JNIEXPORT void JNICALL
-Java_xyz_illuminate_terminal_JNI_close(JNIEnv *TERMUX_UNUSED(env), jclass TERMUX_UNUSED(clazz),
+Java_xyz_illuminate_mrcode_JNI_close(JNIEnv *TERMUX_UNUSED(env), jclass TERMUX_UNUSED(clazz),
                                        jint fileDescriptor) {
     close(fileDescriptor);
 }

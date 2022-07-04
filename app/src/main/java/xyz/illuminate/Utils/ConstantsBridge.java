@@ -1,4 +1,4 @@
-package com.illuminate.Utils;
+package xyz.illuminate.Utils;
 
 public class ConstantsBridge {
 
