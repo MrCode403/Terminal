@@ -29,7 +29,7 @@ import java.util.Map;
 import xyz.illuminate.Utils.BootstrapInstaller;
 import xyz.illuminate.Utils.ConstantsBridge;
 import xyz.illuminate.Utils.Environment;
-import xyz.illuminate.terminal.R;
+import xyz.illuminate.mrcode.R;
 import xyz.illuminate.terminal.TerminalEmulator;
 import xyz.illuminate.terminal.TerminalSession;
 import xyz.illuminate.terminal.TerminalSessionClient;
