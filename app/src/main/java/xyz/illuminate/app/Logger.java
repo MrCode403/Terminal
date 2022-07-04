@@ -1,8 +1,7 @@
-package com.illuminate.app;
+package xyz.illuminate.app;
 
 import android.content.Context;
 import android.os.Build;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -18,7 +17,7 @@ public class Logger {
             Runtime.getRuntime().exec("logcat -c");
             //Toast.makeText(context, "Logcat cleared", Toast.LENGTH_LONG).show();
         } catch (IOException e) {
-        //    Toast.makeText(context, "There was an error saving logcat to file", Toast.LENGTH_LONG).show();
+            //    Toast.makeText(context, "There was an error saving logcat to file", Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }
@@ -45,7 +44,7 @@ public class Logger {
             File folder = new File(String.valueOf(path));
             folder.mkdirs();
 
-            File file = new File(path +  context.getPackageName() + ".txt");
+            File file = new File(path + context.getPackageName() + ".txt");
             file.createNewFile();
 
             try {
@@ -54,14 +53,14 @@ public class Logger {
                 buf.append(log.toString());
                 buf.newLine();
                 buf.close();
-             //  Toast.makeText(context, "Logcat saved successfully to: " + file.toString(), Toast.LENGTH_LONG).show();
-              //  Toast.makeText(context, "Logcat saved successfully to: " + file.toString(), Toast.LENGTH_LONG).show();
+                //  Toast.makeText(context, "Logcat saved successfully to: " + file.toString(), Toast.LENGTH_LONG).show();
+                //  Toast.makeText(context, "Logcat saved successfully to: " + file.toString(), Toast.LENGTH_LONG).show();
             } catch (IOException e) {
                 Toast.makeText(context, "There was an error saving logcat to file: " + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
         } catch (IOException e) {
-          //  Toast.makeText(context, "There was an error saving logcat to file: " + Log.getStackTraceString(e), Toast.LENGTH_LONG).show();
+            //  Toast.makeText(context, "There was an error saving logcat to file: " + Log.getStackTraceString(e), Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }
