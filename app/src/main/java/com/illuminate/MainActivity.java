@@ -35,7 +35,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Map;
 
-import xyz.illuminate.terminal.R;
+import com.illuminate.R;
 import xyz.illuminate.terminal.TerminalEmulator;
 import xyz.illuminate.terminal.TerminalSession;
 import xyz.illuminate.terminal.TerminalSessionClient;
