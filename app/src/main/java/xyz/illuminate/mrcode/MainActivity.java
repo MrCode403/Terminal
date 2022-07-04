@@ -1,10 +1,4 @@
-package com.illuminate;
-
-import static com.illuminate.Utils.Environment.BIN_DIR;
-import static com.illuminate.Utils.Environment.HOME;
-import static com.illuminate.Utils.Environment.LOGIN_SHELL;
-import static com.illuminate.Utils.Environment.PREFIX;
-import static com.illuminate.Utils.Environment.getEnvironment;
+package xyz.illuminate.mrcode;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -25,9 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.blankj.utilcode.util.ClipboardUtils;
 import com.blankj.utilcode.util.KeyboardUtils;
-import com.illuminate.Utils.BootstrapInstaller;
-import com.illuminate.Utils.ConstantsBridge;
-import com.illuminate.Utils.Environment;
 
 import org.json.JSONException;
 
@@ -35,6 +26,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Map;
 
+import xyz.illuminate.Utils.BootstrapInstaller;
+import xyz.illuminate.Utils.ConstantsBridge;
+import xyz.illuminate.Utils.Environment;
 import xyz.illuminate.terminal.R;
 import xyz.illuminate.terminal.TerminalEmulator;
 import xyz.illuminate.terminal.TerminalSession;
@@ -252,10 +246,10 @@ public class MainActivity extends AppCompatActivity
         root = findViewById(R.id.root);
         virtualKeyTable = findViewById(R.id.virtual_key_table);
         Environment.init();
-        final File bash = new File(BIN_DIR, "bash");
+        final File bash = new File(Environment.BIN_DIR, "bash");
         final boolean useSystemShell = getSharedPreferences("config", Activity.MODE_PRIVATE).getBoolean("KEY_TERMINAL_USE_SYSTEM_SHELL", false);
-        if ((PREFIX.exists()
-                && PREFIX.isDirectory()
+        if ((Environment.PREFIX.exists()
+                && Environment.PREFIX.isDirectory()
                 && bash.exists()
                 && bash.isFile()
                 && bash.canExecute())
@@ -286,7 +280,7 @@ public class MainActivity extends AppCompatActivity
 
                                     if (future.isCompletedExceptionally() || throwable != null) {
                                         // LOG.error("Future has been completed exceptionally.");
-                                        //showInstallationError(throwable);
+                                        showInstallationError(throwable);
                                         Toast.makeText(MainActivity.this, throwable.toString(), Toast.LENGTH_LONG).show();
                                         return;
                                     }
@@ -330,11 +324,11 @@ public class MainActivity extends AppCompatActivity
         if (extras != null && extras.containsKey(KEY_WORKING_DIRECTORY)) {
             String directory = extras.getString(KEY_WORKING_DIRECTORY, null);
             if (directory == null || directory.trim().length() <= 0) {
-                directory = HOME.getAbsolutePath();
+                directory = Environment.HOME.getAbsolutePath();
             }
             return directory;
         }
-        return HOME.getAbsolutePath();
+        return Environment.HOME.getAbsolutePath();
     }
 
     private KeyListener getKeyListener() {
@@ -342,7 +336,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private TerminalSession createSession(final String workingDirectory) {
-        final Map<String, String> environment = getEnvironment();
+        final Map<String, String> environment = Environment.getEnvironment();
         final String[] env = new String[environment.size()];
         int i = 0;
         for (Map.Entry<String, String> entry : environment.entrySet()) {
@@ -361,7 +355,7 @@ public class MainActivity extends AppCompatActivity
                 );
 
         try {
-            final File file = new File(PREFIX, "etc/apt/sources.list");
+            final File file = new File(Environment.PREFIX, "etc/apt/sources.list");
             final FileOutputStream out = new FileOutputStream(file);
             out.write(SOURCES_LIST_CONTENT);
             out.flush();
@@ -376,8 +370,8 @@ public class MainActivity extends AppCompatActivity
     @NonNull
     private String getShellPath() {
         final boolean useSystemShell = getSharedPreferences("config", Activity.MODE_PRIVATE).getBoolean("KEY_TERMINAL_USE_SYSTEM_SHELL", false);
-        if (!useSystemShell && LOGIN_SHELL.exists() && LOGIN_SHELL.isFile()) {
-            return LOGIN_SHELL.getAbsolutePath();
+        if (!useSystemShell && Environment.LOGIN_SHELL.exists() && Environment.LOGIN_SHELL.isFile()) {
+            return Environment.LOGIN_SHELL.getAbsolutePath();
         }
 
         if (!useSystemShell) {

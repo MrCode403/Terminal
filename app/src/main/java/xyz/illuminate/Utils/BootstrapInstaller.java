@@ -1,6 +1,6 @@
-package com.illuminate.Utils;
+package xyz.illuminate.Utils;
 
-import static com.illuminate.Utils.Environment.PREFIX;
+import static xyz.illuminate.Utils.Environment.PREFIX;
 
 import android.content.Context;
 import android.os.Build;
@@ -13,6 +13,8 @@ import androidx.annotation.RequiresApi;
 import androidx.core.util.Pair;
 
 import com.blankj.utilcode.util.FileUtils;
+
+import org.jetbrains.annotations.Contract;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -27,14 +29,16 @@ import java.util.concurrent.CompletionException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-/**
- * Installs the bootstraps zip into {@code $SYSROOT}.
- *
- * <p>This class in very much based on Termux's TermuxInstaller.java.
- *
- * @author Akash Yadav
- */
+import xyz.illuminate.app.App;
+
 public class BootstrapInstaller {
+    public static String ARCH_SPECIFIC_ASSET_DATA_DIR = "data/" + App.getArch();
+
+    @NonNull
+    @Contract(pure = true)
+    public static String getArchSpecificAsset(String name) {
+        return ARCH_SPECIFIC_ASSET_DATA_DIR + "/" + name;
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @NonNull
@@ -46,7 +50,7 @@ public class BootstrapInstaller {
                     //LOG.debug(msg);
                     notify(listener, msg);
                     try (final var assetIn =
-                                 context.getAssets().open(ToolsManager.getArchSpecificAsset("bootstrap.zip"));
+                                 context.getAssets().open(getArchSpecificAsset("bootstrap.zip"));
                          final var zip = new ZipInputStream(assetIn)) {
 
                         final var buffer = new byte[8096];
@@ -148,7 +152,6 @@ public class BootstrapInstaller {
                         }
 
                         notify(listener, "context.getString(R.string.msg_extracting_hooks)");
-                        ToolsManager.extractLibHooks();
 
                         //LOG.info("Bootstrap packages installed successfully.");
                     } catch (IOException | ErrnoException e) {
