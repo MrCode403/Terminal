@@ -4,7 +4,7 @@ package xyz.illuminate.terminal;
 final class JNI {
 
   static {
-    System.loadLibrary("androidide-terminal");
+    System.loadLibrary("iTerminal");
   }
 
   /**
