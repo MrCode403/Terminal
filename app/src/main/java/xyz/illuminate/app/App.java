@@ -34,7 +34,6 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Logger.Save(this);
         try {
             applicationContext = getApplicationContext();
         } catch (Exception ignore) {
