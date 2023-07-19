@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onCopyTextToClipboard(TerminalSession session, String text) {
-        ClipboardUtils.copyText("AndroidIDE Terminal", text);
+        ClipboardUtils.copyText("iTerminal", text);
     }
 
     @Override
